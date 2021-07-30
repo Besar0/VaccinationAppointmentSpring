@@ -47,5 +47,9 @@ public class AppointmentsService {
 	public void removeAppointment(Appointments appointment) {
 		this.appointmentsRepository.delete(appointment);
 	}
+	
+	public void updateAppointment(Appointments appointment) {
+		this.appointmentsRepository.update(appointment);
+	}
 
 }

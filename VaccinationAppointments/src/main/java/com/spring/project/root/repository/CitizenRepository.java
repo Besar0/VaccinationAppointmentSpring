@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import com.spring.project.root.dataacces.Citizens;
@@ -21,6 +22,13 @@ public class CitizenRepository extends BasicRepository<Citizens>{
 		TypedQuery<Citizens> query = entityManager.createNamedQuery("citizens.findAll", Citizens.class);
 		List<Citizens> list = query.getResultList();
 		return CollectionUtils.isEmpty(list) ? null : list;
+	}
+	
+	@Transactional
+	@Override
+	public Citizens save(Citizens citizen) {
+		entityManager.persist(citizen);
+		return citizen;
 	}
 	
 }

@@ -91,12 +91,18 @@ public class CitizenController {
 	}
 	
 	@RequestMapping(path = "/removeAppointment", method = { RequestMethod.GET })
-	public String doRemoveUsers(@RequestParam(name="idappointment")int idappointment, Model model) {
+	public String doRemoveAppointment(@RequestParam(name="idappointment")int idappointment, Model model) {
 		appointmentService.removeAppointment( appointmentService.getById(idappointment) );
 		return "redirect:citizen/dashboard";
 	}
 
-
+	@RequestMapping(path = "/cancelAppointment", method = { RequestMethod.GET })
+	public String doUpdateAppointment(@RequestParam(name="idappointment")int idappointment, Model model) {
+		Appointments appointment =  appointmentService.getById(idappointment);
+		appointment.setCanceled((short) 1);
+		appointmentService.updateAppointment( appointment );
+		return "redirect:citizen/dashboard";
+	}
 	
 	
 	private String loggedUser() {

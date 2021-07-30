@@ -18,4 +18,8 @@ public class CitizenService {
 		return this.citizenRepository.getAll();
 	}
 	
+	public Citizens addCitizen(Citizens citizen){
+		return this.citizenRepository.save(citizen);
+	}
+	
 }

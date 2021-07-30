@@ -38,6 +38,9 @@ public class Users implements EntityModel{
     @Column(name = "role")
     private String role;
     
+    @Column(name = "vaccinated")
+    private short vaccinated;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idcitizen", referencedColumnName = "idcitizen")
     private Citizens idcitizen;
@@ -96,6 +99,16 @@ public class Users implements EntityModel{
 	public void setIdcitizen(Citizens idcitizen) {
 		this.idcitizen = idcitizen;
 	}
+
+	public short getVaccinated() {
+		return vaccinated;
+	}
+
+	public void setVaccinated(short vaccinated) {
+		this.vaccinated = vaccinated;
+	}
+	
+	
 	
 }
 

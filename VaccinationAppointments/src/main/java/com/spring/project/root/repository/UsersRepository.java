@@ -32,10 +32,25 @@ public class UsersRepository extends BasicRepository<Users>{
 		return ObjectUtils.isEmpty(element) ? null : element;
 	}
 	
+	public Users  getById(int iduser) {
+		TypedQuery<Users> query = entityManager.createNamedQuery("users.findByIduser", Users.class);
+		query.setParameter("iduser", iduser);
+		Users element = query.getSingleResult();
+		return ObjectUtils.isEmpty(element) ? null : element;
+	}
+
+	
 	@Transactional
 	@Override
 	public Users save(Users user) {
 		entityManager.persist(user);
+		return user;
+	}
+	
+	@Transactional
+	@Override
+	public Users update(Users user) {
+		entityManager.merge(user);
 		return user;
 	}
 

@@ -22,8 +22,16 @@ public class UsersService {
 		return this.usersRepository.getUserByUsername(username);
 	}
 	
+	public Users getByid(int iduser) {
+		return this.usersRepository.getById(iduser);
+	}
+	
 	public void addUser(Users user){
 		this.usersRepository.save(user);
+	}
+	
+	public void updateUser(Users user){
+		this.usersRepository.update(user);
 	}
 	
 }

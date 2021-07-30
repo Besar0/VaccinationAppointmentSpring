@@ -79,5 +79,13 @@ public class AppointmentsRepository extends BasicRepository<Appointments>{
 	        entityManager.remove(entityManager.merge(appointment));
 	    }
 	}
+	
+	@Transactional
+	@Override
+	public Appointments update(Appointments appointment) {
+		entityManager.merge(appointment);
+		return appointment;
+	}
+
 
 }

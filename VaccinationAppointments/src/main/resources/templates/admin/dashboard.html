@@ -25,42 +25,6 @@
 <a href="/spring-project-template/citizen/dashboard" class="btn btn-secondary" role="button">Schedule an Appointment</a>
 </div>
 
-<div style="padding: 25px;">
-<table class="table table-striped table-light" >
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Vaccine</th>
-      <th scope="col">Center</th>
-      <th scope="col">Address</th>
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr th:each="appointment : ${appointments}">
-      <td th:text = "${appointment?.iduser.idcitizen.name} + ' ' + ${appointment?.iduser.idcitizen.surname}"></td>
-      <td th:text = "${appointment?.idvaccine.name}"></td>
-      <td th:text = "${appointment?.idcenter.name}"></td>
-      <td th:text = "${appointment?.idcenter.address}"></td>
-      <td th:text = "${appointment?.date}"></td>
-      <td th:text = "${appointment?.time}"></td>
-      <td> <form th:action="@{/doneAppointment}">
-    		<button class="btn btn-outline-success" type="submit" th:name="idappointment" th:value="${appointment.idappointment}">Done
-    		</button>
-    		</form>
-      </td>
-      <td> <form th:action="@{/missedAppointment}">
-    		<button class="btn btn-outline-danger" type="submit" th:name="idappointment" th:value="${appointment.idappointment}">Missed
-    		</button>
-    		</form>
-      </td>
-    </tr>
-    </tbody>
-</table>
-</div>
        
    </body>
 </html>
